@@ -4,7 +4,8 @@ Book Club notes
 Note that the references will not compile because the `phds.bib`
 BibTeX file is not in this repository.
 
-In the YAML you can comment out like this.
+In the YAML of `the-book-of-why-notes.Rmd` you can comment out
+bibliography line like this:
 
 ~~~
 ---
