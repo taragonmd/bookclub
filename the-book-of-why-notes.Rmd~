@@ -6,7 +6,7 @@ output:
   pdf_document:
     toc: false
     toc_depth: 1
-    keep_tex: true
+    keep_tex: false
     fig_caption: true
     latex_engine: pdflatex
     number_sections: true
@@ -64,10 +64,9 @@ graphics: yes
 linkcolor: purple
 urlcolor: purple
 citecolor: green
-# spacing: double
-bibliography: /Users/tja/Library/texmf/bibtex/bib/phds.bib 
 link-citations: yes
-csl: /Users/tja/Dropbox/tja/texmf/bibtex/csl/styles/vancouver-brackets.csl 
+csl: vancouver-brackets.csl 
+bibliography: /Users/tja/Library/texmf/bibtex/bib/phds.bib 
 ---
 
 ```{r setup, include=FALSE, warning=FALSE}
@@ -175,16 +174,24 @@ knitr::include_graphics("IMG_Figure-p12b.jpg")
 
 A book club is an intervention. Book club participation could be
 
-- mandatory
-- incentivized
-- voluntary
+a. mandatory
+b. incentivized
+c. voluntary
 
-We *chose* to make the book club *voluntary*.
+I (PHD director) *chose* to make the book club *voluntary*.
 
-Staff *chose* to participate or not. 
+Staff *chose* (self-select) to participate or not. 
 
 > **Insight:** Every *decision* has a *causal assumption* (causal
-> inference) and a *prediction* (probabilistic reasonging).
+> inference) and a *prediction* (probabilistic reasoning). If my
+> long-term goal is to spread causal thinking, what short term causal
+> models did I likely consider that led to making the book club
+> voluntary? For staff, what causal models did they consider in
+> self-selecting to participate in the book club? If months later I
+> show good data that those who attended the book club improved their
+> work performance compared to those who did not attend, what causal
+> inferences can I make or not make? Explain your reasoniing.
+
 
 # Ladder of Causation
 
@@ -221,6 +228,8 @@ Table: The Causal Hierarchy. Questions at level $i$ can only be answered if info
 > reasoning, and decision-making are the core competencies of
 > **population health thinking** (PHT). PHT supports PHDS.
 
+Figure \ref{fig:p39fig1.4} is the causal diagram for the firing squad
+example (TBoW, p. 39).
 
 \begin{figure}[htb]
 \centering
@@ -241,6 +250,41 @@ Table: The Causal Hierarchy. Questions at level $i$ can only be answered if info
 Court Order and C = Captain.}
 \label{fig:p39fig1.4}
 \end{figure}
+
+Although not presented in the book, these are the *structural equations*.
+
+\begin{equation}
+  f_{CO} : CO=\begin{cases}
+    \text{true\ OR\ false}
+  \end{cases}
+\end{equation}
+\begin{equation}
+  f_{C} : C=\begin{cases}
+    \text{true}, & \text{if $CO$ = true}.\\
+    \text{false}, & \text{if $CO$ = false}.
+  \end{cases}
+\end{equation}
+\begin{equation}
+  f_{A} : A=\begin{cases}
+    \text{true}, & \text{if $C$ = true}.\\
+    \text{false}, & \text{if $C$ = false}.
+  \end{cases}
+\end{equation}
+\begin{equation}
+  f_{B} : B=\begin{cases}
+    \text{true}, & \text{if $C$ = true}.\\
+    \text{false}, & \text{if $C$ = false}.
+  \end{cases}
+\end{equation}
+\begin{equation}
+  f_{D} : D=\begin{cases}
+    \text{true}, & \text{if $A$ = true OR $B$ = true}.\\
+    \text{false}, & \text{if $A$ = false AND $B$ = false}.
+  \end{cases}
+\end{equation}
+
+
+
 
 \begin{figure}[htb]
 \centering
@@ -283,6 +327,7 @@ decided not to fire?}
 \label{fig:p42fig1.6}
 \end{figure}
 
+\clearpage
 
 ## EXAMPLE: Smallpox vaccination (p.\ 44) {-}
 
