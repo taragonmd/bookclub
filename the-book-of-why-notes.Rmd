@@ -11,7 +11,7 @@ output:
     latex_engine: pdflatex
     number_sections: true
 documentclass: article
-fontsize: 11pt
+fontsize: 10pt
 classoption: oneside
 geometry: left=1.5in, right=1.5in, top=0.85in, footskip=0.75in
 subparagraph: yes
