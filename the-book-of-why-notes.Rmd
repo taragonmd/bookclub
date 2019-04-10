@@ -33,6 +33,7 @@ header-includes:
   \usepackage{changepage}
   \usepackage{textcomp,marvosym}
   \usepackage{cite}
+  \usepackage{varioref}
   \usepackage{nameref,hyperref}
   \usepackage[left]{lineno}
   \usepackage{microtype}
@@ -195,7 +196,7 @@ Staff *chose* (self-select) to participate or not.
 
 # Ladder of Causation
 
-Table \ref{tab:causalhierarchy} (adapted from
+Table \vref{tab:causalhierarchy} (adapted from
 [@Pearl2019_doi-10.1145-3241036]) corresponds to the Ladder of
 Causation on p.\ 28 of TBoW.
 
@@ -228,7 +229,7 @@ Table: The Causal Hierarchy. Questions at level $i$ can only be answered if info
 > reasoning, and decision-making are the core competencies of
 > **population health thinking** (PHT). PHT supports PHDS.
 
-Figure \ref{fig:p39fig1.4} is the causal diagram for the firing squad
+Figure \vref{fig:p39fig1.4} is the causal diagram for the firing squad
 example (TBoW, p. 39).
 
 \begin{figure}[htb]
@@ -255,7 +256,7 @@ Although not presented in the book, these are the *structural equations*.
 
 \begin{equation}
   f_{CO} : CO=\begin{cases}
-    \text{true\ OR\ false}
+    \text{true\ or\ false}
   \end{cases}
 \end{equation}
 \begin{equation}
@@ -284,6 +285,12 @@ Although not presented in the book, these are the *structural equations*.
 \end{equation}
 
 
+If Soldier A decides to fire on his or her own volition, this is an
+*intervention* ($A=$ true). Now, the probability of death is $P(D \mid
+do(A=\text{true}), B)$.  In a causal graph an intervention is depicted
+by *removing* all arrows pointing into node $A$ and setting value of
+$A$ to true, and the remaining nodes are unchanged (Figure
+\vref{fig:p41fig1.5}).
 
 
 \begin{figure}[htb]
