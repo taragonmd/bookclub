@@ -289,7 +289,7 @@ If Soldier A decides to fire on his or her own volition, this is an
 *intervention* ($A=$ true). Now, the probability of death is $P(D \mid
 do(A=\text{true}), B)$.  In a causal graph an intervention is depicted
 by *removing* all arrows pointing into node $A$ and setting value of
-$A$ to true, and the remaining nodes are unchanged (Figure
+$A$ to true, and keeping the remaining nodes are unchanged (Figure
 \vref{fig:p41fig1.5}).
 
 
