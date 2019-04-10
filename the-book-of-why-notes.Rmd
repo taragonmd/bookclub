@@ -132,7 +132,7 @@ What is a counterfactual?
 The "Inference Engine" (Figure 1 on p. 12 of TBoW). 
 
 ```{r fig.p12, echo=FALSE, out.width="7in", fig.pos="ht", fig.align = "center", , fig.cap = "The Inference Engine"}
-knitr::include_graphics("IMG_Figure-p12.pdf")
+knitr::include_graphics("./Figs/IMG_Figure-p12.pdf")
 ```
 
 1. knowledge (mostly implicit)
@@ -149,7 +149,7 @@ Here is an alternative depiction of the inference engine
 [@Pearl2019_doi-10.1145-3241036].
 
 ```{r fig.p12b, echo=FALSE, out.width="7in", fig.pos="ht", fig.align = "center", , fig.cap = "Alternative depiction of Inference Engine"}
-knitr::include_graphics("IMG_Figure-p12b.jpg")
+knitr::include_graphics("./Figs/IMG_Figure-p12b.jpg")
 ```
 
 
