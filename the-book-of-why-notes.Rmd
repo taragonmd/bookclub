@@ -359,7 +359,6 @@ vaccination than smallpox."
 
 How do you explain the impact of the vaccination campaign?
 
-
 \begin{figure}[htb]
 \centering
 \begin{tikzpicture}
@@ -376,6 +375,23 @@ How do you explain the impact of the vaccination campaign?
 45). Is vaccination beneficial or harmful?}
 \label{fig:p45fig1.7}
 \end{figure}
+
+Counterfactual reasoning is how we retrospectively **measure impact** for a
+completed intervention. This can only be accomplished with a causal
+model. Here is the information available for each variable (node).
+
+| Variable node | Probability            |
+|---------------+------------------------|
+| Vaccination   | $P(V=1)=0.99$          |
+| Reaction      | $P(R=1 \mid V=1)=0.01$ |
+|               | $P(R=1 \mid V=0)=0$    |
+| Smallpox      | $P(S=1 \mid V=1)=0$    |
+|               | $P(S=1 \mid V=0)=0.02$ |
+| Death         | $P(D=1 \mid R=1)=0.01$ |
+|               | $P(D=1 \mid S=1)=0.2$  |
+
+
+1 - (Surviving reaction)(Surviving smallpox)(Surviving reaction and smallpox)
 
 
 <!--
