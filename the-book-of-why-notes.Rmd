@@ -252,51 +252,53 @@ Court Order and C = Captain.}
 \label{fig:p39fig1.4}
 \end{figure}
 
-Although not presented in the book, these are the *structural equations*.
+Although not presented in the book, these are the *structural
+equations* for Figure \ref{fig:p39fig1.4} where $0=$ false and $1=$ true.
 
 \begin{equation}
   f_{CO} : CO=\begin{cases}
-    \text{true\ or\ false}
+    \text{1\ or\ 0}
   \end{cases}
 \end{equation}
 \begin{equation}
   f_{C} : C=\begin{cases}
-    \text{true}, & \text{if $CO$ = true}.\\
-    \text{false}, & \text{if $CO$ = false}.
+    \text{1}, & \text{if $CO$ = 1}.\\
+    \text{0}, & \text{if $CO$ = 0}.
   \end{cases}
 \end{equation}
 \begin{equation}
   f_{A} : A=\begin{cases}
-    \text{true}, & \text{if $C$ = true}.\\
-    \text{false}, & \text{if $C$ = false}.
+    \text{1}, & \text{if $C$ = 1}.\\
+    \text{0}, & \text{if $C$ = 0}.
   \end{cases}
 \end{equation}
 \begin{equation}
   f_{B} : B=\begin{cases}
-    \text{true}, & \text{if $C$ = true}.\\
-    \text{false}, & \text{if $C$ = false}.
+    \text{1}, & \text{if $C$ = 1}.\\
+    \text{0}, & \text{if $C$ = 0}.
   \end{cases}
 \end{equation}
 \begin{equation}
   f_{D} : D=\begin{cases}
-    \text{true}, & \text{if $A$ = true OR $B$ = true}.\\
-    \text{false}, & \text{if $A$ = false AND $B$ = false}.
+    \text{1}, & \text{if $A$ = 1 or $B$ = 1}.\\
+    \text{0}, & \text{if $A$ = 0 and $B$ = 0}.
   \end{cases}
 \end{equation}
 
+\clearpage
 
-If Soldier A decides to fire on his or her own volition, this is an
-*intervention* ($A=$ true). Now, the probability of death is $P(D \mid
-do(A=\text{true}), B)$.  In a causal graph an intervention is depicted
-by *removing* all arrows pointing into node $A$ and setting value of
-$A$ to true, and keeping the remaining nodes are unchanged (Figure
-\vref{fig:p41fig1.5}).
+**Interventional reasoning:** If Soldier A decides to fire on his or
+her own volition, this is an *intervention* ($A=1$). Now, the
+probability of death is $P(D \mid do(A=1), B)$.  In a causal
+graph an intervention is depicted by *removing* all arrows pointing
+into node $A$ and setting value of $A$ to true, and keeping the
+remaining nodes are unchanged (Figure \vref{fig:p41fig1.5}).
 
 
 \begin{figure}[htb]
 \centering
 \begin{tikzpicture}
-    \node (a) at (0,0) [label=left:{A = true},point];
+    \node (a) at (0,0) [label=left:{A = 1},point];
     \node (b) at (3,0) [label=right:B,point];
 	\node (c) at (1.5,1.5) [label=right:C,point];
 	\node (d) at (1.5,-1.5) [label=below:D,point];
@@ -314,14 +316,24 @@ value true.}
 \label{fig:p41fig1.5}
 \end{figure}
 
+
+**Counterfactual reasoning:** If we observe a dead prisoner, we could
+ask: What \emph{would have happened if} Soldier A had decided *not* to
+fire?  This is a retrospective counterfactual intervention at node $A$
+($A=0$) knowing that the other nodes must have be set to
+true. Figure \vref{fig:p42fig1.6} depicts this counterfactual
+intervention.  This is why it looks very similar to Figure
+\vref{fig:p41fig1.5} (i.e., no arrows pointing into to node $A$). 
+
+
 \begin{figure}[htb]
 \centering
 \begin{tikzpicture}
-    \node (a) at (0,0) [label=left:{A = false},point];
-    \node (b) at (3,0) [label=right:{B = true},point];
-	\node (c) at (1.5,1.5) [label=right:{C = true},point];
+    \node (a) at (0,0) [label=left:{A = 0},point];
+    \node (b) at (3,0) [label=right:{B = 1},point];
+	\node (c) at (1.5,1.5) [label=right:{C = 1},point];
 	\node (d) at (1.5,-1.5) [label=below:{D = ?},point];
-	\node (co) at (1.5,1.5+1) [label=above:{CO = true},point];
+	\node (co) at (1.5,1.5+1) [label=above:{CO = 1},point];
 	\path (co) edge (c);
     %\path (c) edge (a);
 	\path (c) edge (b);
