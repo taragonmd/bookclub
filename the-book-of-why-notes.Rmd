@@ -391,7 +391,65 @@ model. Here is the information available for each variable (node).
 |               | $P(D=1 \mid S=1)=0.2$  |
 
 
-1 - (Surviving reaction)(Surviving smallpox)(Surviving reaction and smallpox)
+If there were no vaccination campaign---the counterfactual---then the
+number acquiring smallpox would be 20,000 ($1,000,000 \times 0.02$),
+and the number of deaths would be 4,000 ($20,000 \times 0.2$). In
+other words, the number of deaths prevented by the vaccination
+campaign was 3861 ($4000 - 99 - 40$).
+
+
+## R implementation (optional) {-}
+
+
+The smallpox vaccination example above does not require a computer.
+However, if you can learn to use the computer for a simple problem,
+then you can solve complex problems with a little extra effort.
+
+
+```{r, out.width="2in", fig.pos="ht", fig.align = "center"}
+rm(list=ls())
+library(bnlearn)
+library(gRain)
+# p.V <- 50/100 # neutral prior
+p.V <- 99/100 # neutral prior
+p.R.V <- 1/100
+p.S.V <- 0
+p.R.noV <- 0
+p.S.noV <- 1/50
+p.D.RnoS <- 1/100
+p.D.SnoR <- 1/5
+p.D.noRnoS <- 0
+p.D.SR <- 1 - (1-p.D.RnoS)*(1-p.D.SnoR)
+dag <- empty.graph(nodes = c('V', 'R', 'S', 'D')) 
+dag <- set.arc(dag, from = 'V', to = 'R')
+dag <- set.arc(dag, from = 'V', to = 'S')
+dag <- set.arc(dag, from = 'R', to = 'D')
+dag <- set.arc(dag, from = 'S', to = 'D')
+graphviz.plot(dag)
+```
+
+```{r}
+V.lv <- c('No', 'Yes')
+R.lv <- c('No', 'Yes')
+S.lv <- c('No', 'Yes')
+D.lv <- c('No', 'Yes')
+V.prob <- array(c(1-p.V, p.V), dim=2, dimnames=list(V = V.lv))
+R.prob <- array(c(1-p.R.noV,p.R.noV,1-p.R.V,p.R.V), dim=c(2,2),
+  dimnames=list(R = R.lv, V = V.lv))
+S.prob <- array(c(1-p.S.noV,p.S.noV,1-p.S.V,p.S.V), dim=c(2,2),
+  dimnames=list(S = S.lv, V = V.lv))
+D.prob <- array(c(1-p.D.noRnoS,p.D.noRnoS,1-p.D.RnoS,p.D.RnoS,
+  1-p.D.SnoR,p.D.SnoR,1-p.D.SR,p.D.SR), 
+  dim=c(2,2,2), dimnames=list(D = D.lv, R = R.lv, S = S.lv))
+cpt <- list(V=V.prob, R=R.prob, S=S.prob, D=D.prob)
+bn <- custom.fit(dag, cpt)
+junction <- compile(as.grain(bn))
+## Set Evidence to test hypotheses (one model)
+## Alternative: change input parameters and rerun different models
+j.V.yes <- setEvidence(junction, nodes = 'V', states = 'No')
+querygrain(j.V.yes, nodes = 'S')$S*1000000
+querygrain(j.V.yes, nodes = 'D')$D*1000000
+```
 
 
 <!--
